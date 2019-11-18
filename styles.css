@@ -1,0 +1,66 @@
+/* body {
+    background-image: url("../Images/wood.jpg");
+    
+} */
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+table {
+    border: 1px solid black;
+    width: 80%;
+    height: 30px;
+    border-spacing: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout:fixed;
+    /* color: white; */
+}
+.frame {
+    height: 30px;
+    border-right: 1px solid black;
+}
+
+.frame-score {
+    height: 30px;
+    border-right: 1px solid black;
+}
+
+.frame2 {
+    border-bottom: 1px solid black;
+}
+
+th {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border-radius: 50%;
+    color: red;
+    background-color: black;
+    border: none;
+    height: 50px;
+    width: 50px;
+    margin-right: 1rem;
+    
+}
+
+.pins {
+    margin-top: 65px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.scoreSheet {
+    text-align: center;
+}
+
+.border-right {
+    border-right: none;
+}
