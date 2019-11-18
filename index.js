@@ -1,97 +1,9 @@
+console.log('working...');
 let pins;
-let scorePosition = 0;
 let myTable = document.getElementById("myTable");
-// myTable.rows[1].cells[scorePosition].innerHTML = pins;
-// scorePosition += 1
-console.log('working...')
 let scoreArray = [];
-let totalScore =0;
-// let spare = {
-//     isSpare: false,
-//     frame: 0
-// }
-// let strike = {
-//     isStrike: false,
-//     frame: 0
-// }
+let frameOne, frameTwo, frameThree, frameFour, frameFive, frameSix, frameSeven, frameEight, frameNine, frameTen;
 
-// let frameOne = {
-//     frame: 1,
-//     ballOne: scoreArray[0],
-//     ballTwo: scoreArray[1],
-//     isStrike: false,
-//     isSpare: false,
-//     isComplete: false,
-//     checkStrike: (scoreArr) => {
-//         if (scoreArray[0] === 'null') {
-//             isStrike = true;
-//             ballOne = 10;
-//         } else {
-//             isStrike = false;
-//         }
-//     },
-//     checkSpare: (scoreArr) => {
-//         if (scoreArray[0] + scoreArray[1] === 10){
-//             isSpare = true;
-//         }
-//     },
-//     score: (ballsOne, ballsTwo, frameTwo, frameThree) => {
-//         if(this.isStrike && frameTwo.isStrike && frameThree.isStrike){
-//             isComplete = true;
-//             return this.ballOne + frameTwo.ballOne + frameThree.ballOne
-//         } else if(this.isStrike && frameTwo.isStrike && frameThree.ballOne){
-//             isComplete = true;
-//             return this.ballOne + frameTwo.ballOne + frameThree.ballOne;
-//         } else if(this.isStrike && frameTwo.ballOne){
-//             isComplete = true;
-//             return this.ballOne +frameTwo.ballOne + frameTwo.ballTwo
-//         } else if (this.isSpare && frameTwo.ballOne) {
-//             return this.ballOne + this.ballTwo + frameTwo.ballOne
-//         } else {
-//             isComplete = true;
-//             return this.ballOne + this.ballTwo
-//         }
-//     }
-// }
-
-// let frameTwo = {
-//     frame: 2,
-//     ballOne: scoreArray[2],
-//     ballTwo: scoreArray[3],
-//     isStrike: false,
-//     isSpare: false,
-//     isComplete: false,
-//     checkStrike: (scoreArr) => {
-//         if (scoreArray[2] === 'null') {
-//             isStrike = true;
-//             ballOne = 10;
-//         } else {
-//             isStrike = false;
-//         }
-//     },
-//     checkSpare: (scoreArr) => {
-//         if (scoreArray[2] + scoreArray[3] === 10){
-//             isSpare = true;
-//         }
-//     },
-//     score: () => {
-//         if(isStrike && frameThree.isStrike && frameFour.isStrike){
-//             isComplete = true;
-//             return ballOne + frameThree.ballOne + frameFour.ballOne
-//         } else if(isStrike && frameThree.isStrike && frameFour.ballOne){
-//             isComplete = true;
-//             return ballOne + frameThree.ballOne + frameFour.ballOne;
-//         } else if(isStrike && frameThree.ballOne){
-//             isComplete = true;
-//             return ballOne +frameThree.ballOne + frameThree.ballTwo
-//         } else if (isSpare && frameThree.ballOne) {
-//             return ballOne + ballTwo + frameThree.ballOne
-//         } else {
-//             isComplete = true;
-//             return ballOne + ballTwo
-//         }
-//     }
-// }
 
 const startgame = () => {
     document.getElementById("Zero").addEventListener("click", () => {
@@ -209,11 +121,16 @@ const startgame = () => {
 
     document.getElementById("Ten").addEventListener("click", () => {
         pins = 10
+        if (scoreArray.length <= 17){
         if (scoreArray.length % 2 === 0) {
+            
             scoreArray.push(null, pins)
         } else {
             scoreArray.push(pins)
         }
+    } else {
+        scoreArray.push(pins)
+    }
         console.log(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -225,9 +142,11 @@ const startgame = () => {
 startgame();
 
 const frameMarkings = (scoreArr) => {
+    if (scoreArr.length <22){
     for (let i = 0; i < scoreArray.length; i++) {
         myTable.rows[1].cells[i].innerHTML = scoreArray[i];
     }
+}
 }
 
 //Hide buttons based on pins knocked down
@@ -290,18 +209,14 @@ const newRackPins = (scoreArr) => {
 
 //compare First roll to Second Roll for each frame
 const isSpareOrStrike = (scoreArr) => {
-    // strike.isStrike = false;
-    // spare.isSpare = false;
     let frame1A = Number(document.getElementById("frame1a").innerHTML);
     let frame1B = Number(document.getElementById("frame1b").innerHTML);
     if (scoreArr[0] === null && frame1B === 10) {
         myTable.rows[1].cells[1].innerHTML = 'X';
-        // strike.isStrike = true;
-        // strike.frame = 1
+        
     } else if (10 - (frame1A + frame1B) === 0) {
         myTable.rows[1].cells[1].innerHTML = '/';
-        // spare.isSpare = true;
-        // spare.frame = 1
+        
     }
 
     let frame2A = Number(document.getElementById("frame2a").innerHTML);
@@ -370,24 +285,29 @@ const isSpareOrStrike = (scoreArr) => {
 
     let frame10A = Number(document.getElementById("frame10a").innerHTML);
     let frame10B = Number(document.getElementById("frame10b").innerHTML);
-    if (scoreArr[18] === null && frame10B === 10) {
-        myTable.rows[1].cells[19].innerHTML = 'X';
+    let frame10C = Number(document.getElementById("frame10c").innerHTML);
+    if (scoreArr[18] === 10) {
+        myTable.rows[1].cells[18].innerHTML = 'X';
+        // myTable.rows[1].cells[19].innerHTML = ''
+        
     } else if (10 - (frame10A + frame10B) === 0) {
         myTable.rows[1].cells[19].innerHTML = '/';
     }
 
+    if (scoreArr[18]=== 10 && scoreArr[19] === 10){
+        myTable.rows[1].cells[19].innerHTML = 'X';
+    } else if (10 - (frame10B + frame10C) === 0) {
+        myTable.rows[1].cells[20].innerHTML = '/';
+    }
+
+    if (scoreArr[18]=== 10 && scoreArr[19] === 10 && scoreArr[20] === 10){
+        myTable.rows[1].cells[20].innerHTML = 'X';
+    }
+
 }
 
-/*
-Things needed to do for calcScore:
-1. Handle a strike - 10 + next 2 balls thrown 
-2. Handle a spare - 10 + next ball thrown
-3. Add total to frame / recalculate to handle strike and spare frames
-4. Split spare and strike into two different functions?
 
-*/
-let frameOne, frameTwo, frameThree, frameFour, frameFive, frameSix, frameSeven, frameEight, frameNine, frameTen;
-const calcScore = (scoreArr) => {    
+const calcScore = (scoreArr) => {
     //frame 1
     if (myTable.rows[2].cells[0].innerHTML === '') {
         if (scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] === null) {
@@ -400,14 +320,13 @@ const calcScore = (scoreArr) => {
             frameOne = scoreArray[0] + scoreArray[1] + scoreArray[3]
         } else if (scoreArray[0] + scoreArray[1] === 10 && scoreArray[2] !== null) {
             frameOne = scoreArray[0] + scoreArray[1] + scoreArray[2]
-        } else if (scoreArray[0] +scoreArray[1] !== 10) {
+        } else if (scoreArray[0] + scoreArray[1] !== 10) {
             frameOne = scoreArray[0] + scoreArray[1];
-        }        
+        }
     }
 
     //frame 2
     if (myTable.rows[2].cells[1].innerHTML === '') {
-        console.log('frame 2 else block')
         if (scoreArray[2] === null && scoreArray[4] === null && scoreArray[6] === null) {
             frameTwo = scoreArray[3] + scoreArray[5] + scoreArray[7];
         } else if (scoreArray[2] === null && scoreArray[4] === null && scoreArray[6] !== null) {
@@ -418,11 +337,10 @@ const calcScore = (scoreArr) => {
             frameTwo = scoreArray[2] + scoreArray[3] + scoreArray[5]
         } else if (scoreArray[2] + scoreArray[3] === 10 && scoreArray[4] !== null) {
             frameTwo = scoreArray[2] + scoreArray[3] + scoreArray[4]
-            console.log('spare found')
         } else if (scoreArray[2] + scoreArray[3] !== 10) {
             frameTwo = scoreArray[2] + scoreArray[3];
         }
-        
+
     }
 
     //frame 3
@@ -440,7 +358,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[4] + scoreArray[5] !== 10) {
             frameThree = scoreArray[4] + scoreArray[5];
         }
-        
+
     }
 
     //frame 4
@@ -458,7 +376,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[6] + scoreArray[7] !== 10) {
             frameFour = scoreArray[6] + scoreArray[7];
         }
-        
+
     }
 
     //frame 5
@@ -476,7 +394,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[8] + scoreArray[9] !== 10) {
             frameFive = scoreArray[8] + scoreArray[9];
         }
-        
+
     }
 
     //frame 6
@@ -494,7 +412,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[10] + scoreArray[11] !== 10) {
             frameSix = scoreArray[10] + scoreArray[11];
         }
-        
+
     }
 
     //frame 7
@@ -512,7 +430,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[12] + scoreArray[13] !== 10) {
             frameSeven = scoreArray[12] + scoreArray[13];
         }
-        
+
     }
 
     //frame 8
@@ -530,7 +448,7 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[14] + scoreArray[15] !== 10) {
             frameEight = scoreArray[14] + scoreArray[15];
         }
-        
+
     }
 
     //frame 9
@@ -548,24 +466,32 @@ const calcScore = (scoreArr) => {
         } else if (scoreArray[16] + scoreArray[17] !== 10) {
             frameNine = scoreArray[16] + scoreArray[17];
         }
-        
+
     }
 
-    
+    //frame 10 
+    if (myTable.rows[2].cells[9].innerHTML === '') {
+        if (scoreArray[18] === 10 || scoreArray[18] + scoreArray[19] === 10){
+        frameTen = scoreArray[18] + scoreArray[19] + scoreArray[20];
+    } else {
+        frameTen = scoreArray[18] + scoreArray[19];
+    }
+    }
+
 
     if (frameOne) { myTable.rows[2].cells[0].innerHTML = frameOne }
-    if (frameTwo) { myTable.rows[2].cells[1].innerHTML = frameTwo + frameOne}
-    if (frameThree) { myTable.rows[2].cells[2].innerHTML = frameOne + frameTwo + frameThree}
-    if (frameFour) { myTable.rows[2].cells[3].innerHTML = frameOne + frameTwo + frameThree + frameFour}
-    if (frameFive) { myTable.rows[2].cells[4].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive}
-    if (frameSix) { myTable.rows[2].cells[5].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix}
-    if (frameSeven) { myTable.rows[2].cells[6].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven}
-    if (frameEight) { myTable.rows[2].cells[7].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven + frameEight}
-    if (frameNine) { myTable.rows[2].cells[8].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven + frameEight + frameNine}
-    if (frameTen) { myTable.rows[2].cells[9].innerHTML = frameTen}
+    if (frameTwo) { myTable.rows[2].cells[1].innerHTML = frameTwo + frameOne }
+    if (frameThree) { myTable.rows[2].cells[2].innerHTML = frameOne + frameTwo + frameThree }
+    if (frameFour) { myTable.rows[2].cells[3].innerHTML = frameOne + frameTwo + frameThree + frameFour }
+    if (frameFive) { myTable.rows[2].cells[4].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive }
+    if (frameSix) { myTable.rows[2].cells[5].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix }
+    if (frameSeven) { myTable.rows[2].cells[6].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven }
+    if (frameEight) { myTable.rows[2].cells[7].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven + frameEight }
+    if (frameNine) { myTable.rows[2].cells[8].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven + frameEight + frameNine }
+    if (frameTen) { myTable.rows[2].cells[9].innerHTML = frameOne + frameTwo + frameThree + frameFour + frameFive + frameSix + frameSeven + frameEight + frameNine + frameTen }
 }
 
-const calcScore3 = (scoreArr) => {
+
 // for (let i=0; i<scoreArray.length; i++){
 //     if(myTable.rows[2].cells[i].innerHTML === '') {
 //         if (scoreArray[i] === null && scoreArray[i+2] === null && scoreArray[i+4] === null){
@@ -586,162 +512,10 @@ const calcScore3 = (scoreArr) => {
 // }
 
 
-    let frameOne, frameTwo, frameThree, frameFour, frameFive, frameSix, frameSeven, frameEight, frameNine, frameTen;
-
-    // frameOne = totalScoreArray[0];
-    // // totalScore = frameOne;
-    // frameTwo =  totalScoreArray[1];
-    // // totalScore = frameTwo;
-    // frameThree = totalScoreArray[2];
-    // totalScore = frameThree;
-    // frameFour = totalScoreArray[3];
-    // totalScore = frameFour;
-    // frameFive = totalScoreArray[4];
-    // totalScore = frameFive;
-    // frameSix = totalScoreArray[5];
-    // totalScore = frameSix;
-    // frameSeven = totalScoreArray[6];
-    // totalScore = frameSeven;
-    // frameEight = totalScoreArray[7];
-    // totalScore = frameEight;
-    // frameNine = scoreArray[16] + scoreArray[17] + totalScore;
-    // totalScore = frameNine
-    // frameTen = scoreArray[18] + scoreArray[19] + totalScore;
-    // totalScore = frameTen
-
-    if (myTable.rows[2].cells[0].innerHTML === '') {
-        if (scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] === null) {
-            frameOne = scoreArray[1] + scoreArray[3] + scoreArray[5];
-        } else if (scoreArray[0] === null && scoreArray[2] === null) {
-            frameOne = scoreArray[1] + scoreArray[3] + scoreArray[4]
-        } else if (scoreArray[0] === null) {
-            frameOne = scoreArray[1] + scoreArray[2] + scoreArray[3]
-        } else if (scoreArray[0] + scoreArray[1] === 10 && scoreArray[2] === null) {
-            frameOne = scoreArray[0] + scoreArray[1] + scoreArray[3]
-        } else if (scoreArray[0] + scoreArray[1] === 10 && scoreArray[2] !== null) {
-            frameOne = scoreArray[0] + scoreArray[1] + scoreArray[2]
-        } else {
-            frameOne = scoreArray[0] + scoreArray[1];
-        }
-    }
 
 
-    if (myTable.rows[2].cells[1].innerHTML === '') {        
-        if (scoreArray[2] === null && scoreArray[4] === null && scoreArray[6] === null) {
-            frameTwo = scoreArray[3] + scoreArray[5] + scoreArray[7];
-        } else if (scoreArray[2] === null && scoreArray[4] === null) {
-            frameTwo = scoreArray[3] + scoreArray[5] + scoreArray[6]
-        } else if (scoreArray[2] === null) {
-            frameTwo = scoreArray[3] + scoreArray[4] + scoreArray[5]
-        } else if (scoreArray[2] + scoreArray[3] === 10 && scoreArray[4] === null) {
-            frameTwo = scoreArray[2] + scoreArray[3] + scoreArray[5]
-        } else if (scoreArray[2] + scoreArray[3] === 10 && scoreArray[4] !== null) {
-            frameTwo = scoreArray[2] + scoreArray[3] + scoreArray[4]
-            console.log('spare found')
-        } else {
-            frameTwo = scoreArray[2] + scoreArray[3];
-        }
-    }
-    if (myTable.rows[2].cells[2].innerHTML === '') {
-        if (scoreArray[4] === null && scoreArray[6] === null && scoreArray[8] === null) {
-            frameThree = scoreArray[5] + scoreArray[7] + scoreArray[9];
-        } else if (scoreArray[4] === null && scoreArray[6] === null) {
-            frameThree = scoreArray[5] + scoreArray[7] + scoreArray[8]
-        } else if (scoreArray[4] === null) {
-            frameThree = scoreArray[5] + scoreArray[6] + scoreArray[7]
-        } else if (scoreArray[4] + scoreArray[5] === 10 && scoreArray[6] === null) {
-            frameThree = scoreArray[4] + scoreArray[5] + scoreArray[7]
-        } else if (scoreArray[4] + scoreArray[5] === 10 && scoreArray[6] !== null) {
-            frameThree = scoreArray[4] + scoreArray[5] + scoreArray[6]
-        } else {
-            frameThree = scoreArray[4] + scoreArray[5];
-        }
-    }
 
 
-    if (frameOne) { myTable.rows[2].cells[0].innerHTML = frameOne }
-    if (frameTwo) { myTable.rows[2].cells[1].innerHTML = frameTwo + frameOne}
-    if (frameThree) { myTable.rows[2].cells[2].innerHTML = frameThree }
-    if (frameFour) { myTable.rows[2].cells[3].innerHTML = frameFour }
-    if (frameFive) { myTable.rows[2].cells[4].innerHTML = frameFive }
-    if (frameSix) { myTable.rows[2].cells[5].innerHTML = frameSix }
-    if (frameSeven) { myTable.rows[2].cells[6].innerHTML = frameSeven }
-    if (frameEight) { myTable.rows[2].cells[7].innerHTML = frameEight }
-    if (frameNine) { myTable.rows[2].cells[8].innerHTML = frameNine }
-    if (frameTen) { myTable.rows[2].cells[9].innerHTML = frameTen }
 
-    
 
-}
 
-// const updateScores = () => {
-//     let frameOne = myTable.rows[2].cells[0].innerHTML
-//     let frameTwo = myTable.rows[2].cells[1].innerHTML;
-//     let frameThree = myTable.rows[2].cells[2].innerHTML;
-//     if (frameTwo) { myTable.rows[2].cells[1].innerHTML = Number(frameOne) + Number(frameTwo) }
-//     if (frameThree) { myTable.rows[2].cells[2].innerHTML = Number(frameTwo) + Number(frameThree) }
-// }
-
-[null, 10, null, 10, null, 10, 9, 1, 8, 2, 7, 2, 9, 1, null, 10, 9, 1, 9, 1, 9]
-
-const calcScore2 = (scoreArr) => {
-    let frameOne, frameTwo, frameThree, frameFour, frameFive, frameSix, frameSeven, frameEight, frameNine, frameTen;
-
-    //Frame 1
-    //no mark
-    if (scoreArray.length === 2 && scoreArray[0] !== null && scoreArray[0] + scoreArray[1] !== 10){
-        frameOne = scoreArray[0] + scoreArray[1];
-    //Mark with next ball not being a strike
-    } else if (scoreArray.length === 3 && scoreArray[0] !== null && scoreArray[2] !== null && scoreArray[0] + scoreArray[1] === 10) {
-        frameOne = scoreArray[0] + scoreArray[1] + scoreArray[2]
-    //Mark with next ball being a strike
-    } else if (scoreArray.length === 3 && scoreArray[0] !== null && scoreArray[2] === null && scoreArray[0] + scoreArray[1] === 10) {
-        frameOne = scoreArray[0] + scoreArray[1] + scoreArray[3]
-    //Strike with the next two rolls not being a strike
-    } else if (scoreArray.length === 4 && scoreArray[0] === null && scoreArray[2] !== null){
-        frameOne = scoreArray[1] + scoreArray[2] + scoreArray[3]
-    // Strike with next roll a strike but not 2nd roll
-    } else if (scoreArray.length === 5 && scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] !== null){
-        frameOne = scoreArray[1] + scoreArray[3] + scoreArray[4]
-    //Strike followed by 2 strikes
-    } else if (scoreArray.length === 6 && scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] === null){
-        frameOne = scoreArray[1] + scoreArray[3] + scoreArray[5];
-    }
-    
-    
-    //Frame 2
-    //no mark
-    if (scoreArray.length === 2 && scoreArray[0] !== null && scoreArray[0] + scoreArray[1] !== 10){
-        frameOne = scoreArray[0] + scoreArray[1];
-    //Mark with next ball not being a strike
-    } else if (scoreArray.length === 3 && scoreArray[0] !== null && scoreArray[2] !== null && scoreArray[0] + scoreArray[1] === 10) {
-        frameOne = scoreArray[0] + scoreArray[1] + scoreArray[2]
-    //Mark with next ball being a strike
-    } else if (scoreArray.length === 3 && scoreArray[0] !== null && scoreArray[2] === null && scoreArray[0] + scoreArray[1] === 10) {
-        frameOne = scoreArray[0] + scoreArray[1] + scoreArray[3]
-    //Strike with the next two rolls not being a strike
-    } else if (scoreArray.length === 4 && scoreArray[0] === null && scoreArray[2] !== null){
-        frameOne = scoreArray[1] + scoreArray[2] + scoreArray[3]
-    // Strike with next roll a strike but not 2nd roll
-    } else if (scoreArray.length === 5 && scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] !== null){
-        frameOne = scoreArray[1] + scoreArray[3] + scoreArray[4]
-    //Strike followed by 2 strikes
-    } else if (scoreArray.length === 6 && scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] === null){
-        frameOne = scoreArray[1] + scoreArray[3] + scoreArray[5];
-    }
-    
-}
-
-// if (scoreArray[0] === null && scoreArray[2] === null && scoreArray[4] === null) {
-//     frameOne = scoreArray[1] + scoreArray[3] + scoreArray[5];
-// } else if (scoreArray[0] === null && scoreArray[2] === null) {
-//     frameOne = scoreArray[1] + scoreArray[3] + scoreArray[4]
-// } else if (scoreArray[0] === null) {
-//     frameOne = scoreArray[1] + scoreArray[2] + scoreArray[3]
-// } else if (scoreArray[0] + scoreArray[1] === 10 && scoreArray[2] === null) {
-//     frameOne = scoreArray[0] + scoreArray[1] + scoreArray[3]
-// } else if (scoreArray[0] + scoreArray[1] === 10 && scoreArray[2] !== null) {
-//     frameOne = scoreArray[0] + scoreArray[1] + scoreArray[2]
-// } else {
-//     frameOne = scoreArray[0] + scoreArray[1];
-// }
