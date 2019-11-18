@@ -296,7 +296,7 @@ const isSpareOrStrike = (scoreArr) => {
 
     if (scoreArr[18]=== 10 && scoreArr[19] === 10){
         myTable.rows[1].cells[19].innerHTML = 'X';
-    } else if (10 - (frame10B + frame10C) === 0) {
+    } else if (10 - (scoreArr[19] + scoreArr[20] && scoreArr[18] !== scoreArr[20]) === 0) {
         myTable.rows[1].cells[20].innerHTML = '/';
     }
 
