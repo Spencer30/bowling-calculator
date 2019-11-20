@@ -1,15 +1,22 @@
-/* body {
-    background-image: url("../Images/wood.jpg");
+body {
+    background-image: url("lane2.jpg");
+    height: 100vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     
-} */
+}
 
 h1 {
-    color: darkblue;
+    color: lightseagreen;
     text-align: center;
+    font-size: 3.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 table {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 80%;
     height: 30px;
     border-spacing: 0;
@@ -17,25 +24,25 @@ table {
     margin-left: auto;
     margin-right: auto;
     table-layout:fixed;
-    /* color: white; */
+    color: white;
 }
 .frame {
     height: 30px;
-    border-right: 1px solid black;
+    border-right: 1px solid white;
 }
 
 .frame-score {
     height: 30px;
-    border-right: 1px solid black;
+    border-right: 1px solid white;
 }
 
 .frame2 {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 
 th {
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
     padding: 0;
     margin: 0;
 }
@@ -43,11 +50,12 @@ th {
 button {
     border-radius: 50%;
     color: red;
-    background-color: black;
+    background-color: white;
     border: none;
     height: 50px;
     width: 50px;
     margin-right: 1rem;
+    font-size: 1.5rem;
     
 }
 
