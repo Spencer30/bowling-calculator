@@ -9,7 +9,6 @@ const startgame = () => {
     document.getElementById("Zero").addEventListener("click", () => {
         pins = 0
         scoreArray.push(pins)
-        console.log(scoreArray)
         frameMarkings(scoreArray);
         isSpareOrStrike(scoreArray);
         newRackPins(scoreArray);
@@ -19,7 +18,6 @@ const startgame = () => {
     document.getElementById("One").addEventListener("click", () => {
         pins = 1
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray);
         frameMarkings(scoreArray);
         isSpareOrStrike(scoreArray);
@@ -31,7 +29,6 @@ const startgame = () => {
     document.getElementById("Two").addEventListener("click", () => {
         pins = 2
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray);
         isSpareOrStrike(scoreArray);
@@ -43,7 +40,6 @@ const startgame = () => {
     document.getElementById("Three").addEventListener("click", () => {
         pins = 3
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -54,7 +50,6 @@ const startgame = () => {
     document.getElementById("Four").addEventListener("click", () => {
         pins = 4
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -65,7 +60,6 @@ const startgame = () => {
     document.getElementById("Five").addEventListener("click", () => {
         pins = 5
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -76,7 +70,6 @@ const startgame = () => {
     document.getElementById("Six").addEventListener("click", () => {
         pins = 6
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -87,7 +80,6 @@ const startgame = () => {
     document.getElementById("Seven").addEventListener("click", () => {
         pins = 7
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
@@ -98,7 +90,6 @@ const startgame = () => {
     document.getElementById("Eight").addEventListener("click", () => {
         pins = 8
         scoreArray.push(pins)
-        console.log(scoreArray)
         rackPins(scoreArray)
         frameMarkings(scoreArray);
         isSpareOrStrike(scoreArray);
@@ -111,7 +102,6 @@ const startgame = () => {
         pins = 9
         scoreArray.push(pins)
         rackPins(scoreArray)
-        console.log(scoreArray)
         frameMarkings(scoreArray);
         isSpareOrStrike(scoreArray);
         newRackPins(scoreArray);
@@ -136,7 +126,6 @@ const startgame = () => {
         isSpareOrStrike(scoreArray);
         calcScore(scoreArray);
     });
-    // console.log(scoreArray)
 }
 
 startgame();
