@@ -4,6 +4,16 @@ let myTable = document.getElementById("myTable");
 let scoreArray = [];
 let frameOne, frameTwo, frameThree, frameFour, frameFive, frameSix, frameSeven, frameEight, frameNine, frameTen;
 
+const newGame = () => {
+    scoreArray = [];
+    for (let i = 0; i < 21; i++) {
+        myTable.rows[1].cells[i].innerHTML = '';
+    }
+    for (let i=0; i<10; i++) {
+        myTable.rows[2].cells[i].innerHTML = '';
+    }
+
+}
 
 const startgame = () => {
     document.getElementById("Zero").addEventListener("click", () => {

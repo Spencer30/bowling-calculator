@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-lg-12 pinsBtn">
           <button class="button" id="Zero" value="0">0</button>
-          <button class="button" id="One" value=1>1</button>
+          <button class="button" id="One" value="1">1</button>
           <button class="button" id="Two">2</button>
           <button class="button" id="Three">3</button>
           <button class="button" id="Four">4</button>
@@ -36,7 +36,7 @@
     <div class="container scoreSheet">
       <div class="row">
         <div class="col-lg-12">
-          <Table id="myTable">
+          <table id="myTable">
             <tbody>
               <tr>
                 <th colspan="6">1</th>
@@ -71,24 +71,39 @@
                 <td colspan="3" id="frame9b" class="frame frame2"></td>
                 <td colspan="2" id="frame10a" class="frame"></td>
                 <td colspan="2" id="frame10b" class="frame frame2"></td>
-                <td colspan="2" id="frame10c" class="frame frame2 border-right"></td>
+                <td
+                  colspan="2"
+                  id="frame10c"
+                  class="frame frame2 border-right"
+                ></td>
               </tr>
               <tr>
-                <td colspan="6" id="frameOne"class="frame-score"></td>
-                <td colspan="6" id="frameTwo"class="frame-score"></td>
-                <td colspan="6" id="frameThree"class="frame-score"></td>
-                <td colspan="6" id="frameFour"class="frame-score"></td>
-                <td colspan="6" id="frameFive"class="frame-score"></td>
-                <td colspan="6" id="frameSix"class="frame-score"></td>
-                <td colspan="6" id="frameSeven"class="frame-score"></td>
-                <td colspan="6" id="frameEight"class="frame-score"></td>
-                <td colspan="6" id="frameNine"class="frame-score"></td>
-                <td colspan="6" id="frameTen"class="frame-score border-right"></td>
+                <td colspan="6" id="frameOne" class="frame-score"></td>
+                <td colspan="6" id="frameTwo" class="frame-score"></td>
+                <td colspan="6" id="frameThree" class="frame-score"></td>
+                <td colspan="6" id="frameFour" class="frame-score"></td>
+                <td colspan="6" id="frameFive" class="frame-score"></td>
+                <td colspan="6" id="frameSix" class="frame-score"></td>
+                <td colspan="6" id="frameSeven" class="frame-score"></td>
+                <td colspan="6" id="frameEight" class="frame-score"></td>
+                <td colspan="6" id="frameNine" class="frame-score"></td>
+                <td
+                  colspan="6"
+                  id="frameTen"
+                  class="frame-score border-right"
+                ></td>
               </tr>
             </tbody>
-          </Table>
+          </table>
         </div>
       </div>
+      <button onclick="newGame()" class="new-game">
+        . .
+        <hr class="newGameBall" />
+        New Game
+        <hr class="newGameBall" />
+        .
+      </button>
     </div>
     <script src="index.js"></script>
   </body>
