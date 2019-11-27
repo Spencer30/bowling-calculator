@@ -1,4 +1,4 @@
-console.log('working...');
+// console.log('working...');
 let pins;
 let myTable = document.getElementById("myTable");
 let scoreArray = [];
@@ -9,9 +9,20 @@ const newGame = () => {
     for (let i = 0; i < 21; i++) {
         myTable.rows[1].cells[i].innerHTML = '';
     }
-    for (let i=0; i<10; i++) {
+    for (let i = 0; i < 10; i++) {
         myTable.rows[2].cells[i].innerHTML = '';
     }
+    zeroPin = document.getElementById("Zero").style.display = "inline";
+    onePin = document.getElementById("One").style.display = "inline";
+    twoPin = document.getElementById("Two").style.display = "inline";
+    threePin = document.getElementById("Three").style.display = "inline";
+    fourPin = document.getElementById("Four").style.display = "inline";
+    fivePin = document.getElementById("Five").style.display = "inline";
+    sixPin = document.getElementById("Six").style.display = "inline";
+    sevenPin = document.getElementById("Seven").style.display = "inline";
+    eightPin = document.getElementById("Eight").style.display = "inline";
+    ninePin = document.getElementById("Nine").style.display = "inline";
+    tenPin = document.getElementById("Ten").style.display = "inline";
 
 }
 
@@ -121,17 +132,17 @@ const startgame = () => {
 
     document.getElementById("Ten").addEventListener("click", () => {
         pins = 10
-        if (scoreArray.length <= 17){
-        if (scoreArray.length % 2 === 0) {
-            
-            scoreArray.push(null, pins)
+        if (scoreArray.length <= 17) {
+            if (scoreArray.length % 2 === 0) {
+
+                scoreArray.push(null, pins)
+            } else {
+                scoreArray.push(pins)
+            }
         } else {
             scoreArray.push(pins)
         }
-    } else {
-        scoreArray.push(pins)
-    }
-        console.log(scoreArray)
+        // console.log(scoreArray)
         frameMarkings(scoreArray)
         isSpareOrStrike(scoreArray);
         calcScore(scoreArray);
@@ -141,11 +152,11 @@ const startgame = () => {
 startgame();
 
 const frameMarkings = (scoreArr) => {
-    if (scoreArr.length <22){
-    for (let i = 0; i < scoreArray.length; i++) {
-        myTable.rows[1].cells[i].innerHTML = scoreArray[i];
+    if (scoreArr.length < 22) {
+        for (let i = 0; i < scoreArray.length; i++) {
+            myTable.rows[1].cells[i].innerHTML = scoreArray[i];
+        }
     }
-}
 }
 
 //Hide buttons based on pins knocked down
@@ -212,10 +223,10 @@ const isSpareOrStrike = (scoreArr) => {
     let frame1B = Number(document.getElementById("frame1b").innerHTML);
     if (scoreArr[0] === null && frame1B === 10) {
         myTable.rows[1].cells[1].innerHTML = 'X';
-        
+
     } else if (10 - (frame1A + frame1B) === 0) {
         myTable.rows[1].cells[1].innerHTML = '/';
-        
+
     }
 
     let frame2A = Number(document.getElementById("frame2a").innerHTML);
@@ -288,18 +299,18 @@ const isSpareOrStrike = (scoreArr) => {
     if (scoreArr[18] === 10) {
         myTable.rows[1].cells[18].innerHTML = 'X';
         // myTable.rows[1].cells[19].innerHTML = ''
-        
+
     } else if (10 - (frame10A + frame10B) === 0) {
         myTable.rows[1].cells[19].innerHTML = '/';
     }
 
-    if (scoreArr[18]=== 10 && scoreArr[19] === 10){
+    if (scoreArr[18] === 10 && scoreArr[19] === 10) {
         myTable.rows[1].cells[19].innerHTML = 'X';
     } else if (10 - (scoreArr[19] + scoreArr[20] && scoreArr[18] !== scoreArr[20]) === 0) {
         myTable.rows[1].cells[20].innerHTML = '/';
     }
 
-    if (scoreArr[18]=== 10 && scoreArr[19] === 10 && scoreArr[20] === 10){
+    if (scoreArr[18] === 10 && scoreArr[19] === 10 && scoreArr[20] === 10) {
         myTable.rows[1].cells[20].innerHTML = 'X';
     }
 
@@ -470,11 +481,11 @@ const calcScore = (scoreArr) => {
 
     //frame 10 
     if (myTable.rows[2].cells[9].innerHTML === '') {
-        if (scoreArray[18] === 10 || scoreArray[18] + scoreArray[19] === 10){
-        frameTen = scoreArray[18] + scoreArray[19] + scoreArray[20];
-    } else {
-        frameTen = scoreArray[18] + scoreArray[19];
-    }
+        if (scoreArray[18] === 10 || scoreArray[18] + scoreArray[19] === 10) {
+            frameTen = scoreArray[18] + scoreArray[19] + scoreArray[20];
+        } else {
+            frameTen = scoreArray[18] + scoreArray[19];
+        }
     }
 
 

@@ -86,3 +86,5 @@ th {
 .newGameBall {
     border-color: black;    
 }
+
+button:focus {outline:0;}
