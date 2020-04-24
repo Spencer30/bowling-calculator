@@ -9,33 +9,13 @@
     <title>Bowling Score</title>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
+    <div style="background-color: rgba(0, 0, 0, .98)" >
+    <div class="App">
+        <div class="title">
           <h1>Welcome to the Bowling Score Calculator</h1>
-        </div>
-      </div>
     </div>
-    <div class="container pins">
-      <div class="row">
-        <div class="col-lg-12 pinsBtn">
-          <button class="button" id="Zero" value="0">0</button>
-          <button class="button" id="One" value="1">1</button>
-          <button class="button" id="Two">2</button>
-          <button class="button" id="Three">3</button>
-          <button class="button" id="Four">4</button>
-          <button class="button" id="Five">5</button>
-          <button class="button" id="Six">6</button>
-          <button class="button" id="Seven">7</button>
-          <button class="button" id="Eight">8</button>
-          <button class="button" id="Nine">9</button>
-          <button class="button" id="Ten">10</button>
-        </div>
-      </div>
-    </div>
-    <div class="container scoreSheet">
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="scoresheetContainer">
+        <div class="col-lg-12 scoresheet">
           <table id="myTable">
             <tbody>
               <tr>
@@ -94,17 +74,29 @@
                 ></td>
               </tr>
             </tbody>
-          </table>
-        </div>
-      </div>
+          </table>  
+  </div>
+    </div>
+    <div class="col-lg-12 pins">
+      <button class="pin" id="Zero" value="0">0</button>
+      <button class="pin" id="One" value="1">1</button>
+      <button class="pin" id="Two">2</button>
+      <button class="pin" id="Three">3</button>
+      <button class="pin" id="Four">4</button>
+      <button class="pin" id="Five">5</button>
+      <button class="pin" id="Six">6</button>
+      <button class="pin" id="Seven">7</button>
+      <button class="pin" id="Eight">8</button>
+      <button class="pin" id="Nine">9</button>
+      <button class="pin" id="Ten">10</button>
+    </div>
+    <div class="ballContainer">
       <button onclick="newGame()" class="new-game">
-        . .
-        <hr class="newGameBall" />
-        New Game
-        <hr class="newGameBall" />
-        .
+New Game
       </button>
     </div>
+  </div>
+</div>
     <script src="index.js"></script>
   </body>
 </html>

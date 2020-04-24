@@ -1,15 +1,29 @@
-body {
-    background-image: url("lane2.jpg");
+body{
+    margin: 0;
+    padding: 0;
+}
+.App {
+    background-image: url("lane3.jpg");
+    background-color: rgba(0, 0, 0, .9);
     height: 100vh;
-    min-height: 500px;
+    width: 100vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+    overflow: hidden;
 }
 
+
+.title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+
 h1 {
-    color: lightseagreen;
+    color:  #F67280 ;
     text-align: center;
     font-size: 3.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -17,7 +31,7 @@ h1 {
 
 table {
     border: 1px solid white;
-    width: 80%;
+    width: 100%;
     height: 30px;
     border-spacing: 0;
     text-align: center;
@@ -47,25 +61,38 @@ th {
     margin: 0;
 }
 
-.button {
+.pin {
     border-radius: 50%;
-    color: red;
+    color:  #F67280 ;
     background-color: white;
     border: none;
-    height: 50px;
-    width: 50px;
-    margin-right: 1rem;
-    font-size: 1.5rem;    
+    height: 65px;
+    width: 65px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    font-size: 1.5rem;  
+    margin-bottom: 1.5rem;
 }
 
 .pins {
-    margin-top: 65px;
-    margin-bottom: 30px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:  100%;
+
 }
 
-.scoreSheet {
+.scoresheetContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.scoresheet {
     text-align: center;
+    display:flex;
+    justify-content: center;
+    width: 70%;
+    margin-bottom: 4rem;
 }
 
 .border-right {
@@ -74,15 +101,69 @@ th {
 
 .new-game {
     margin-top: 4.5rem;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .1);
     color: white;
-    width: 8rem;
-    height: 8rem;
-    border: none;
-    border-radius: 50%;
+    width: 300px;
+    height: 75px;
+    border: #F67280  4px solid;
+    border-radius: 25px;
+    font-size: 22px;
     
 }
 
 .newGameBall {
     border-color: black;    
 }
+
+.ballContainer {
+    width: 100;
+    display: flex;
+    justify-content: center;
+
+}
+
+@media only screen 
+  and (min-width: 319px) 
+  and (max-width: 450px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    .pin {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 1rem;
+        font-size: 18px;
+    }
+    .scoresheet {
+        width: 95%;
+    }
+    .new-game {
+        width: 200px;
+        height: 55px;
+        font-size: 13px;
+    }
+
+  }
+
+  @media only screen 
+  and (min-width: 451px) 
+  and (max-width: 1079px) {
+    .pin {
+        width: 50px;
+        height: 50px;
+    }
+
+    .scoresheet {
+        width: 90%;
+    }
+    h1{
+        font-size: 30px;
+    }
+    .new-game {
+        width: 225px;
+        height: 65px;
+        font-size: 18px;
+    }
+
+  }
